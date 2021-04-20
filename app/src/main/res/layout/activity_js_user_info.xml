@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            app:layout_behavior="com.github.kongpf8848.androidworld.utils.FlingBehavior">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:expandedTitleTextAppearance="@android:color/transparent"
+                app:layout_collapseParallaxMultiplier="0.7"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:statusBarScrim="@color/transparent"
+                app:titleEnabled="false">
+
+                <include layout="@layout/include_user_info" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="fill_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:visibility="invisible"
+                    app:layout_collapseMode="pin" />
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_tablayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-24dp"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/view_tablayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="10dp"
+                    android:background="#f6f6f6" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout_user"
+                    android:layout_width="fill_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    app:layout_scrollFlags="enterAlways"
+                    app:tabGravity="center"
+                    app:tabIndicatorColor="#f35e5f"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabMaxWidth="0dp"
+                    app:tabMode="fixed"
+                    app:tabPaddingEnd="26dp"
+                    app:tabPaddingStart="26dp"
+                    app:tabRippleColor="@color/transparent"
+                    app:tabSelectedTextColor="#f35e5f"
+                    app:tabTextColor="#999999" />
+
+                <View
+                    android:id="@+id/view_line_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.4dp"
+                    android:background="#dddddd" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_container"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/white"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--头部布局-->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--状态栏占位-->
+        <View
+            android:id="@+id/view_status_height"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <View
+                android:id="@+id/view_toolbar_bg"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/transparent" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_toolbar_back"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:padding="3dp"
+                        android:src="@drawable/selector_icon_back" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_toolbar_nav"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:padding="3dp"
+                        android:src="@drawable/selector_icon_more" />
+
+                    <ImageView
+                        android:id="@+id/iv_toolbar_search"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:layout_toLeftOf="@id/iv_toolbar_nav"
+                        android:padding="3dp"
+                        android:src="@drawable/selector_icon_search" />
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="26dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@id/iv_toolbar_back"
+                        android:ellipsize="end"
+                        android:maxLength="15"
+                        android:padding="3dp"
+                        android:text="会飞的鱼"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
