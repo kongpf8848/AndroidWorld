@@ -1,7 +1,7 @@
 # AndroidWorld
 **Android日常学习总结**
 
-# 仿简书个人主页(CoordinatorLayout+吸顶悬浮+状态栏&Toolbar背景渐变)
+# 高仿简书个人主页(CoordinatorLayout+吸顶悬浮+状态栏&Toolbar背景渐变)
 
 * 效果图
 
