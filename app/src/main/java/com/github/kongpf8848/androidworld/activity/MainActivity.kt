@@ -1,6 +1,7 @@
 package com.github.kongpf8848.androidworld.activity
 
 import android.os.Bundle
+import android.widget.ImageView
 import com.github.kongpf8848.androidworld.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,6 +19,9 @@ class MainActivity : BaseActivity() {
         super.onCreateEnd(savedInstanceState)
         button1.setOnClickListener {
           startActivity(JSUserInfoActivity::class.java)
+        }
+        button2.setOnClickListener {
+            startActivity(ImageScaleTypeActivity::class.java)
         }
     }
 }
