@@ -32,10 +32,10 @@
 
                 <ImageView
                     android:id="@+id/iv_image_fitCenter"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/big"
+                    android:src="@mipmap/car1"
                     android:background="@android:color/holo_blue_dark"
                     />
             </LinearLayout>
@@ -56,10 +56,10 @@
 
                 <ImageView
                     android:id="@+id/iv_image_center"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/big"
+                    android:src="@mipmap/car1"
                     android:background="@android:color/holo_blue_dark"
                   />
             </LinearLayout>
@@ -87,10 +87,10 @@
 
                 <ImageView
                     android:id="@+id/iv_image_centerCrop"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/big"
+                    android:src="@mipmap/car1"
                     android:background="@android:color/holo_blue_dark"
                      />
             </LinearLayout>
@@ -110,10 +110,10 @@
 
                 <ImageView
                     android:id="@+id/iv_image_centerInside"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/big"
+                    android:src="@mipmap/car1"
                     android:background="@android:color/holo_blue_dark"
                      />
             </LinearLayout>
@@ -141,10 +141,10 @@
 
                 <ImageView
                     android:id="@+id/iv_image_fitStart"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/big"
+                    android:src="@mipmap/car1"
                     android:background="@android:color/holo_blue_dark"
                    />
             </LinearLayout>
@@ -165,10 +165,10 @@
 
                 <ImageView
                     android:id="@+id/iv_image_fitEnd"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/big"
+                    android:src="@mipmap/car1"
                     android:background="@android:color/holo_blue_dark"
                     />
             </LinearLayout>
@@ -197,10 +197,10 @@
 
                 <ImageView
                     android:id="@+id/iv_image_fitXY"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/big"
+                    android:src="@mipmap/car1"
                     android:background="@android:color/holo_blue_dark"
                     />
             </LinearLayout>
@@ -221,10 +221,10 @@
 
                 <ImageView
                     android:id="@+id/iv_image_matrix"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/big"
+                    android:src="@mipmap/car1"
                     android:background="@android:color/holo_blue_dark"
                     android:scaleType="matrix" />
             </LinearLayout>
