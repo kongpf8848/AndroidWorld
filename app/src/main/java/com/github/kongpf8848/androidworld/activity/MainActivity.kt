@@ -1,8 +1,8 @@
 package com.github.kongpf8848.androidworld.activity
 
 import android.os.Bundle
-import android.widget.ImageView
 import com.github.kongpf8848.androidworld.R
+import com.github.kongpf8848.androidworld.extension.startNewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -11,17 +11,17 @@ class MainActivity : BaseActivity() {
         return R.layout.activity_main
     }
 
-    override fun statusBarDarkFont(): Boolean {
+    override fun canUseSwipeBackLayout(): Boolean {
         return false
     }
 
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
         button1.setOnClickListener {
-          startActivity(JSUserInfoActivity::class.java)
+            startNewActivity(clazz= JSUserInfoActivity::class.java)
         }
         button2.setOnClickListener {
-            startActivity(ImageScaleTypeActivity::class.java)
+            startNewActivity(clazz=ImageScaleTypeActivity::class.java)
         }
     }
 }

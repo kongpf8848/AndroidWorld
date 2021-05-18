@@ -2,6 +2,8 @@ package com.github.kongpf8848.androidworld.activity
 import android.os.Bundle
 import android.os.Looper
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.extension.*
 import kotlinx.android.synthetic.main.activity_image_scale_type.*
@@ -12,12 +14,12 @@ class ImageScaleTypeActivity : BaseActivity() {
         return R.layout.activity_image_scale_type
     }
 
-    override fun statusBarDarkFont(): Boolean {
-        return false
-    }
-
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
         Looper.myQueue().addIdleHandler {
 
 //          iv_image_fitCenter.scaleType=ImageView.ScaleType.FIT_CENTER

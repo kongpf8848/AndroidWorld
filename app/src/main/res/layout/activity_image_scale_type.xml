@@ -1,234 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    >
+    android:orientation="vertical"
+   >
 
-    <LinearLayout
+    <com.github.kongpf8848.androidworld.views.CenterTitleToolbar
+        android:id="@+id/toolbar"
+        style="@style/TKToolbarNavigationStyle"
+        app:title="ScaleType"
+        />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:scrollbars="none"
+        android:fillViewport="true"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <!--1-->
+
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!--1-->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="fitCenter"
-                    android:textSize="16sp" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/iv_image_fitCenter"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/car1"
-                    android:background="@android:color/holo_blue_dark"
-                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="fitCenter"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_image_fitCenter"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/holo_blue_dark"
+                        android:src="@mipmap/car1" />
+                </LinearLayout>
+
+                <!--2-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="center"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_image_center"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/holo_blue_dark"
+                        android:src="@mipmap/car1" />
+                </LinearLayout>
             </LinearLayout>
 
-            <!--2-->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!--3-->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="center"
-                    android:textSize="16sp" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/iv_image_center"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/car1"
-                    android:background="@android:color/holo_blue_dark"
-                  />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="centerCrop"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_image_centerCrop"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/holo_blue_dark"
+                        android:src="@mipmap/car1" />
+                </LinearLayout>
+                <!--4-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="centerInside"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_image_centerInside"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/holo_blue_dark"
+                        android:src="@mipmap/car1" />
+                </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <!--5-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="fitStart"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_image_fitStart"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/holo_blue_dark"
+                        android:src="@mipmap/car1" />
+                </LinearLayout>
+
+                <!--6-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="fitEnd"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_image_fitEnd"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/holo_blue_dark"
+                        android:src="@mipmap/car1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
+
+                <!--7-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="fixXY"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_image_fitXY"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/holo_blue_dark"
+                        android:src="@mipmap/car1" />
+                </LinearLayout>
+
+                <!--8-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="matrix"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_image_matrix"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/holo_blue_dark"
+                        android:scaleType="matrix"
+                        android:src="@mipmap/car1" />
+                </LinearLayout>
+            </LinearLayout>
+
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
+    </ScrollView>
 
-            <!--3-->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="centerCrop"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/iv_image_centerCrop"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/car1"
-                    android:background="@android:color/holo_blue_dark"
-                     />
-            </LinearLayout>
-            <!--4-->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="centerInside"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/iv_image_centerInside"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/car1"
-                    android:background="@android:color/holo_blue_dark"
-                     />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <!--5-->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="fitStart"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/iv_image_fitStart"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/car1"
-                    android:background="@android:color/holo_blue_dark"
-                   />
-            </LinearLayout>
-
-            <!--6-->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="fitEnd"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/iv_image_fitEnd"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/car1"
-                    android:background="@android:color/holo_blue_dark"
-                    />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:paddingBottom="10dp"
-            android:orientation="horizontal">
-
-            <!--7-->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="fixXY"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/iv_image_fitXY"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/car1"
-                    android:background="@android:color/holo_blue_dark"
-                    />
-            </LinearLayout>
-
-            <!--8-->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="matrix"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/iv_image_matrix"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/car1"
-                    android:background="@android:color/holo_blue_dark"
-                    android:scaleType="matrix" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>
