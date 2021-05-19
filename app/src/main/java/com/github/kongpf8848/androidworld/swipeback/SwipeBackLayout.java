@@ -2,10 +2,13 @@
 package com.github.kongpf8848.androidworld.swipeback;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -13,11 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
 import com.github.kongpf8848.androidworld.R;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 
 public class SwipeBackLayout extends FrameLayout {
 
@@ -437,6 +442,8 @@ public class SwipeBackLayout extends FrameLayout {
 
     public void attachToActivity(Activity activity) {
         mActivity = new WeakReference<>(activity);
+        activity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        activity.getWindow().getDecorView().setBackgroundDrawable(null);
         TypedArray a = activity.getTheme().obtainStyledAttributes(
                 new int[]{android.R.attr.windowBackground});
         int background = a.getResourceId(0, 0);
@@ -444,8 +451,7 @@ public class SwipeBackLayout extends FrameLayout {
 
         ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
         ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
-//        设置背景色
-//        decorChild.setBackgroundResource(background);
+        decorChild.setBackgroundResource(background);
         decor.removeView(decorChild);
         addView(decorChild);
         setContentView(decorChild);
@@ -461,6 +467,27 @@ public class SwipeBackLayout extends FrameLayout {
         }
     }
 
+    private void convertActivityToTranslucentAfterL(Activity activity) {
+        try {
+            Method getActivityOptions = Activity.class.getDeclaredMethod("getActivityOptions");
+            getActivityOptions.setAccessible(true);
+            Object options = getActivityOptions.invoke(activity);
+
+            Class<?>[] classes = Activity.class.getDeclaredClasses();
+            Class<?> translucentConversionListenerClazz = null;
+            for (Class clazz : classes) {
+                if (clazz.getSimpleName().contains("TranslucentConversionListener")) {
+                    translucentConversionListenerClazz = clazz;
+                }
+            }
+            Method convertToTranslucent = Activity.class.getDeclaredMethod("convertToTranslucent",
+                    translucentConversionListenerClazz, ActivityOptions.class);
+            convertToTranslucent.setAccessible(true);
+            convertToTranslucent.invoke(activity, null, options);
+        } catch (Throwable t) {
+        }
+    }
+
     private class ViewDragCallback extends ViewDragHelper.Callback {
         private boolean mIsScrollOverValid;
 
@@ -468,6 +495,7 @@ public class SwipeBackLayout extends FrameLayout {
         public boolean tryCaptureView(View view, int i) {
             boolean ret = mDragHelper.isEdgeTouched(mEdgeFlag, i);
             if (ret) {
+                convertActivityToTranslucentAfterL(mActivity.get());
                 if (mDragHelper.isEdgeTouched(EDGE_LEFT, i)) {
                     mTrackingEdge = EDGE_LEFT;
                 } else if (mDragHelper.isEdgeTouched(EDGE_RIGHT, i)) {

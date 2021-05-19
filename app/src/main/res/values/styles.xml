@@ -10,11 +10,6 @@
 
     </style>
 
-    <style name="SwipeBackTheme" parent="@style/AppTheme">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
-    </style>
-
 
     <style name="TKToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
         <item name="android:layout_width">match_parent</item>

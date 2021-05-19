@@ -29,11 +29,12 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackLay
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        onSwipeBackStart(savedInstanceState);
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTranslucentOrFloating()) {
             fixOrientation();
         }
-        onSwipeBackStart(savedInstanceState);
         super.onCreate(savedInstanceState);
+
         mSwipeBackLayout = new SwipeBackLayout(this);
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
         mSwipeBackLayout.setEdgeSize(dip2px(SMOOTH_WIDTH));

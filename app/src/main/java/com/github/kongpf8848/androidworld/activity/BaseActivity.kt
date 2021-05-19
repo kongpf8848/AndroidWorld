@@ -8,14 +8,9 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
-import androidx.annotation.IdRes
-import androidx.appcompat.widget.ThemeUtils
 import androidx.core.content.ContextCompat
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.swipeback.SwipeBackActivity
-import com.gyf.immersionbar.ImmersionBar
 import com.kongpf.commonhelper.ScreenHelper
 
 abstract class BaseActivity : SwipeBackActivity() {
@@ -32,20 +27,6 @@ abstract class BaseActivity : SwipeBackActivity() {
         onCreateEnd(savedInstanceState)
     }
 
-    override fun onSwipeBackStart(savedInstanceState: Bundle?) {
-        super.onSwipeBackStart(savedInstanceState)
-        if (canUseSwipeBackLayout()) {
-            setTheme(R.style.SwipeBackTheme)
-        } else {
-            setTheme(R.style.AppTheme)
-        }
-    }
-
-    override fun onSwipeBackEnd(savedInstanceState: Bundle?) {
-        super.onSwipeBackEnd(savedInstanceState)
-        window.decorView.findViewById<View>(android.R.id.content)
-            .setBackgroundColor(ContextCompat.getColor(this, R.color.c_fff6f6f6))
-    }
 
     protected open fun onCreateStart(savedInstanceState: Bundle?) {}
     protected open fun onCreateEnd(savedInstanceState: Bundle?) {}
