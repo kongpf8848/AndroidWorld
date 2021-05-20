@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import com.github.kongpf8848.androidworld.R
-import com.github.kongpf8848.androidworld.swipeback.SwipeBackActivity
 import com.kongpf.commonhelper.ScreenHelper
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 
 abstract class BaseActivity : SwipeBackActivity() {
 
@@ -124,7 +124,6 @@ abstract class BaseActivity : SwipeBackActivity() {
         }
         statusBarView.setBackgroundColor(ContextCompat.getColor(applicationContext,statusBarColor()))
         window.navigationBarColor = ContextCompat.getColor(applicationContext,navigationBarColor())
-
     }
 
     /**
@@ -167,22 +166,37 @@ abstract class BaseActivity : SwipeBackActivity() {
         }
     }
 
+    /**
+     * 获取自定义的状态栏View，如为null，则采用默认的View填充状态栏区域
+     */
     protected open fun getStatusBarView(): View? {
         return null
     }
 
+    /**
+     * 状态栏颜色
+     */
     protected open fun statusBarColor(): Int {
         return R.color.white
     }
 
+    /**
+     * 导航栏颜色
+     */
     protected open fun navigationBarColor(): Int {
         return R.color.white
     }
 
+    /**
+     * 状态栏字体颜色是否高亮
+     */
     protected open fun statusBarDarkFont(): Boolean {
         return true
     }
 
+    /**
+     * 导航栏字体颜色是否高亮
+     */
     protected open fun navigationBarDarkFont(): Boolean {
         return true
     }

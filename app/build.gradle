@@ -57,4 +57,6 @@ dependencies {
     implementation BuildDependencies.circleImageView
     implementation BuildDependencies.commonHelper
 
+    implementation BuildDependencies.swipeBackLayout
+
 }

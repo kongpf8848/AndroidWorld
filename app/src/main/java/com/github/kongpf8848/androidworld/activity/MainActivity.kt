@@ -11,12 +11,10 @@ class MainActivity : BaseActivity() {
         return R.layout.activity_main
     }
 
-    override fun canUseSwipeBackLayout(): Boolean {
-        return false
-    }
 
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
+        setSwipeBackEnable(false)
         button1.setOnClickListener {
             startNewActivity(clazz= JSUserInfoActivity::class.java)
         }
