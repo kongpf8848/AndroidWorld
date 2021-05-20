@@ -29,17 +29,12 @@ class JSUserInfoActivity:BaseActivity(){
         return R.layout.activity_js_user_info
     }
 
-    override fun enableStatusBar(): Boolean {
-        return false
+    override fun getStatusBarView(): View? {
+        return view_status_height
     }
 
-    override fun customInitStatusBar() {
-        super.customInitStatusBar()
-        ImmersionBar.with(this)
-            .statusBarView(R.id.view_status_height)
-            .navigationBarColor(R.color.white)
-            .navigationBarDarkIcon(true)
-            .init()
+    override fun statusBarDarkFont(): Boolean {
+        return false
     }
 
     override fun onCreateEnd(savedInstanceState: Bundle?) {
@@ -79,7 +74,7 @@ class JSUserInfoActivity:BaseActivity(){
             iv_toolbar_nav.isSelected=ratio >= 0.5
             iv_toolbar_search.isSelected = ratio >= 0.5
             toolbar_title.visibility = if (ratio >= 0.5) View.VISIBLE else View.INVISIBLE
-            ImmersionBar.with(this@JSUserInfoActivity).statusBarDarkFont(ratio >= 0.5).init()
+            setStatusBarDarkFont(ratio >= 0.5)
         })
 
     }

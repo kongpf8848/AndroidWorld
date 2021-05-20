@@ -69,53 +69,107 @@ abstract class BaseActivity : SwipeBackActivity() {
     @Override
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        Log.d(TAG, "onPostCreate() called")
-        if (enableStatusBar()) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = Color.TRANSPARENT
-            var uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (statusBarDarkFont()) {
-                    uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                }
+
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        /**
+         * 设置系统状态栏背景颜色为透明
+         */
+        window.statusBarColor = Color.TRANSPARENT
+        var uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            /**
+             * 高亮状态栏字体
+             */
+            if(statusBarDarkFont()) {
+                uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (navigationBarDarkFont()) {
-                    uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-                }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            /**
+             * 高亮导航栏字体
+             */
+            if(navigationBarDarkFont()) {
+                uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
             }
-            window.decorView.systemUiVisibility = uiFlags
-            val statusBarHeight = ScreenHelper.getStatusbarHeight(this)
-            var statusBarView = window.decorView.findViewById(R.id.status_bar_id) as View?
-            if (statusBarView == null) {
-                statusBarView = View(this)
-                statusBarView.id = R.id.status_bar_id
-                statusBarView.setBackgroundColor(
-                    ContextCompat.getColor(
-                        applicationContext,
-                        statusBarColor()
-                    )
-                )
-                val contentView = window.decorView.findViewById(android.R.id.content) as ViewGroup
-                contentView.getChildAt(0).setPadding(0, statusBarHeight, 0, 0)
-                contentView.addView(
-                    statusBarView,
-                    ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, statusBarHeight)
-                )
+        }
+        window.decorView.systemUiVisibility = uiFlags
+
+        /**
+         * 获取状态栏高度
+         */
+        val statusBarHeight = ScreenHelper.getStatusbarHeight(this)
+
+        /**
+         * 获取状态栏View
+         */
+        var statusBarView=getStatusBarView()
+        if(statusBarView==null) {
+            statusBarView = View(this)
+            statusBarView.id = R.id.status_bar_id
+            statusBarView.setBackgroundColor(ContextCompat.getColor(applicationContext,statusBarColor()))
+            val contentView = window.decorView.findViewById(android.R.id.content) as ViewGroup
+            /**
+             * 设置Padding
+             */
+            contentView.getChildAt(0).setPadding(0, statusBarHeight, 0, 0)
+            /**
+             * 添加状态栏布局
+             */
+            contentView.addView(statusBarView, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, statusBarHeight))
+        }
+        else{
+            setStatusBarHeight(statusBarView)
+        }
+        statusBarView.setBackgroundColor(ContextCompat.getColor(applicationContext,statusBarColor()))
+        window.navigationBarColor = ContextCompat.getColor(applicationContext,navigationBarColor())
+
+    }
+
+    /**
+     * 设置状态栏字体是否高亮
+     */
+    fun setStatusBarDarkFont(darkFont:Boolean){
+        var uiFlags =View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(darkFont) {
+                uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             }
-            window.navigationBarColor = ContextCompat.getColor(applicationContext, navigationBarColor())
+            else{
+                uiFlags =uiFlags or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            }
+        }
+        window.decorView.systemUiVisibility = uiFlags
+    }
+
+    /**
+     * 设置View高度为状态栏高度
+     */
+    fun setStatusBarHeight(view:View?) {
+        if(view==null){
+            return
+        }
+        val fixHeight=ScreenHelper.getStatusbarHeight(this)
+        var layoutParams = view.layoutParams
+        if (layoutParams == null) {
+            layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        }
+        if (layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT || layoutParams.height == ViewGroup.LayoutParams.MATCH_PARENT) {
+            val finalLayoutParams = layoutParams
+            view.post(Runnable {
+                finalLayoutParams.height = fixHeight
+                view.layoutParams = finalLayoutParams
+            })
         } else {
-            customInitStatusBar()
+            layoutParams.height = fixHeight
+            view.layoutParams = layoutParams
         }
     }
 
-    protected open fun enableStatusBar(): Boolean {
-        return true
+    protected open fun getStatusBarView(): View? {
+        return null
     }
-
-    protected open fun customInitStatusBar() {}
 
     protected open fun statusBarColor(): Int {
         return R.color.white
