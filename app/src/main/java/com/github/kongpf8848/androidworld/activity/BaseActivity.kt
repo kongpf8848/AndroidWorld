@@ -10,10 +10,12 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import com.github.kongpf8848.androidworld.R
+import com.github.kongpf8848.androidworld.utils.ActivityContainer
 import com.kongpf.commonhelper.ScreenHelper
+import me.imid.swipebacklayout.lib.SwipeBackLayout
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 
-abstract class BaseActivity : SwipeBackActivity() {
+abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener {
 
     val TAG: String = javaClass.simpleName
 
@@ -22,9 +24,12 @@ abstract class BaseActivity : SwipeBackActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         onCreateStart(savedInstanceState)
         super.onCreate(savedInstanceState)
+        ActivityContainer.add(this)
         Log.d(TAG, "onCreate called")
         setContentView(getLayoutId())
         onCreateEnd(savedInstanceState)
+
+        swipeBackLayout.addSwipeListener(this)
     }
 
 
@@ -53,6 +58,7 @@ abstract class BaseActivity : SwipeBackActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        ActivityContainer.remove(this)
         Log.d(TAG, "onDestroy() called")
     }
 
@@ -64,6 +70,22 @@ abstract class BaseActivity : SwipeBackActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         Log.d(TAG, "onNewIntent() called")
+    }
+
+    override fun onEdgeTouch(edgeFlag: Int) {
+        Log.d(TAG, "onEdgeTouch() called with: edgeFlag = $edgeFlag")
+    }
+
+    override fun onScrollOverThreshold() {
+        Log.d(TAG, "onScrollOverThreshold() called")
+    }
+
+    override fun onScrollStateChange(state: Int, scrollPercent: Float) {
+        Log.d(
+            TAG,
+            "onScrollStateChange() called with: state = $state, scrollPercent = $scrollPercent"
+        )
+
     }
 
     @Override
@@ -108,7 +130,6 @@ abstract class BaseActivity : SwipeBackActivity() {
         if(statusBarView==null) {
             statusBarView = View(this)
             statusBarView.id = R.id.status_bar_id
-            statusBarView.setBackgroundColor(ContextCompat.getColor(applicationContext,statusBarColor()))
             val contentView = window.decorView.findViewById(android.R.id.content) as ViewGroup
             /**
              * 设置Padding

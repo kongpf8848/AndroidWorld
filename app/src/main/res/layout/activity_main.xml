@@ -23,6 +23,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:text="仿简书底部刷新动画" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="使用Matrix实现ImageView ScaleType" />
 
 </LinearLayout>

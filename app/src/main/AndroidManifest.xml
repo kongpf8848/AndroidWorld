@@ -20,6 +20,8 @@
 
         <activity android:name=".activity.JSUserInfoActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.JSTabActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.ImageScaleTypeActivity"
             android:screenOrientation="portrait" />
 
