@@ -25,5 +25,8 @@ class MainActivity : BaseActivity() {
         button3.setOnClickListener {
             startNewActivity(clazz=ImageScaleTypeActivity::class.java)
         }
+        button4.setOnClickListener {
+            startNewActivity(clazz=GlideHolderActivity::class.java)
+        }
     }
 }

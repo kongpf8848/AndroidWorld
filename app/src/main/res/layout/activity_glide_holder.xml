@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <com.github.kongpf8848.androidworld.views.CenterTitleToolbar
+        android:id="@+id/toolbar"
+        style="@style/TKToolbarNavigationStyle"
+        app:title="Glide占位符loading效果"
+        />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>
