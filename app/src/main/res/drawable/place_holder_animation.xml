@@ -8,14 +8,6 @@
         </shape>
     </item>
 
-    <item>
-        <bitmap
-            android:src="@mipmap/icon_place_holder"
-            android:gravity="center"
-            android:tileMode="disabled"
-            />
-    </item>
-
     <item android:gravity="center" android:id="@+id/layer_animation">
         <animation-list android:oneshot="false" >
             <item android:duration="40" android:drawable="@mipmap/loading_01" />
