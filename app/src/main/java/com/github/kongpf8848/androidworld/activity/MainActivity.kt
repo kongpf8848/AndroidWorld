@@ -1,9 +1,9 @@
 package com.github.kongpf8848.androidworld.activity
 
 import android.os.Bundle
-import android.util.ArrayMap
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.extension.startNewActivity
+import com.kongpf.commonhelper.ToastHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -12,12 +12,12 @@ class MainActivity : BaseActivity() {
         return R.layout.activity_main
     }
 
-
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
         setSwipeBackEnable(false)
         button1.setOnClickListener {
-            startNewActivity(clazz= JSUserInfoActivity::class.java)
+            //startNewActivity(clazz= JSUserInfoActivity::class.java)
+            ToastHelper.toast(applicationContext.getString(R.string.tab_home))
         }
         button2.setOnClickListener {
             startNewActivity(clazz=JSTabActivity::class.java)
@@ -27,6 +27,9 @@ class MainActivity : BaseActivity() {
         }
         button4.setOnClickListener {
             startNewActivity(clazz=GlideHolderActivity::class.java)
+        }
+        button5.setOnClickListener {
+            startNewActivity(clazz=LanguageActivity::class.java)
         }
     }
 }

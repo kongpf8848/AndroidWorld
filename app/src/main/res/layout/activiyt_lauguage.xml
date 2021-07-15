@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.github.kongpf8848.androidworld.views.CenterTitleToolbar
+        android:id="@+id/toolbar"
+        style="@style/TKToolbarNavigationStyle"
+        app:title="@string/language">
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="#38a10b"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="center_vertical|right"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            />
+
+    </com.github.kongpf8848.androidworld.views.CenterTitleToolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        />
+
+</LinearLayout>

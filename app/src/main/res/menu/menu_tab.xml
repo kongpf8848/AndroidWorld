@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <item
+        android:id="@+id/tab_home"
+        android:icon="@mipmap/icon_tab_estate_normal"
+        android:title="@string/tab_home" />
+
+    <item
+        android:id="@+id/tab_wallet"
+        android:icon="@mipmap/icon_tab_wallet_normal"
+        android:title="@string/tab_wallet" />
+
+    <item
+        android:id="@+id/tab_me"
+        android:icon="@mipmap/icon_tab_me_normal"
+        android:title="@string/tab_me" />
+
+
+</menu>

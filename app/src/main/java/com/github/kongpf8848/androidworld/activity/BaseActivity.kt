@@ -1,6 +1,9 @@
 package com.github.kongpf8848.androidworld.activity
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +14,7 @@ import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.utils.ActivityContainer
+import com.github.kongpf8848.androidworld.utils.LanguageUtils
 import com.kongpf.commonhelper.ScreenHelper
 import me.imid.swipebacklayout.lib.SwipeBackLayout
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity
@@ -19,17 +23,30 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
 
     val TAG: String = javaClass.simpleName
 
+    private val languageReceiver =object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            val action = intent?.action
+            if (LanguageUtils.LANGUAGE_ACTION == action) {
+                recreate()
+            }
+        }
+    }
+
     protected abstract fun getLayoutId(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         onCreateStart(savedInstanceState)
+        Log.d(TAG, "onCreateStart called")
         super.onCreate(savedInstanceState)
         ActivityContainer.add(this)
-        Log.d(TAG, "onCreate called")
+        Log.d(TAG, "onCreate11 called")
         setContentView(getLayoutId())
+        registerReceiver(languageReceiver, IntentFilter(LanguageUtils.LANGUAGE_ACTION))
+        Log.d(TAG, "onCreate22 called")
         onCreateEnd(savedInstanceState)
-
+        Log.d(TAG, "onCreateEnd called")
         swipeBackLayout.addSwipeListener(this)
+
     }
 
 
@@ -59,6 +76,7 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
     override fun onDestroy() {
         super.onDestroy()
         ActivityContainer.remove(this)
+        unregisterReceiver(languageReceiver)
         Log.d(TAG, "onDestroy() called")
     }
 
@@ -67,9 +85,24 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
         Log.d(TAG, "onRestart() called")
     }
 
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        Log.d(TAG, "attachBaseContext() called")
+    }
+
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         Log.d(TAG, "onNewIntent() called")
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        Log.d(TAG, "onAttachedToWindow() called")
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        Log.d(TAG, "onDetachedFromWindow() called")
     }
 
     override fun onEdgeTouch(edgeFlag: Int) {

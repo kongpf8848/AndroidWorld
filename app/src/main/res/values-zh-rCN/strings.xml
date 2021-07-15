@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidWorld</string>
+
+    <string name="language">多语言</string>
+    <string name="save">保存</string>
+    <string name="follow_system">跟随系统</string>
+
+    <string name="tab_home">首页</string>
+    <string name="tab_wallet">钱包</string>
+    <string name="tab_me">我</string>
+</resources>

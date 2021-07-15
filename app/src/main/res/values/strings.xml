@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">AndroidWorld</string>
+
+    <string name="language">Language</string>
+
+    <string name="save">Save</string>
+    <string name="follow_system">Auto</string>
+
+
+    <string name="tab_home">Home</string>
+    <string name="tab_wallet">Wallet</string>
+    <string name="tab_me">Me</string>
+
 </resources>
