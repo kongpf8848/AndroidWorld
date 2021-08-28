@@ -16,8 +16,7 @@ class MainActivity : BaseActivity() {
         super.onCreateEnd(savedInstanceState)
         setSwipeBackEnable(false)
         button1.setOnClickListener {
-            //startNewActivity(clazz= JSUserInfoActivity::class.java)
-            ToastHelper.toast(applicationContext.getString(R.string.tab_home))
+            startNewActivity(clazz= JSUserInfoActivity::class.java)
         }
         button2.setOnClickListener {
             startNewActivity(clazz=JSTabActivity::class.java)
@@ -30,6 +29,9 @@ class MainActivity : BaseActivity() {
         }
         button5.setOnClickListener {
             startNewActivity(clazz=LanguageActivity::class.java)
+        }
+        button6.setOnClickListener {
+            startNewActivity(clazz=GaussBlurActivity::class.java)
         }
     }
 }

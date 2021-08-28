@@ -46,4 +46,11 @@
         android:layout_marginTop="20dp"
         android:text="语言设置" />
 
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="高斯模糊" />
+
 </LinearLayout>
