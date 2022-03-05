@@ -53,4 +53,11 @@
         android:layout_marginTop="20dp"
         android:text="高斯模糊" />
 
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="监听截屏" />
+
 </LinearLayout>
