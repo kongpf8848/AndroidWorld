@@ -32,7 +32,7 @@ class OkHttpActivity : BaseActivity() {
 
             client.newCall(request).enqueue(object: Callback{
                 override fun onFailure(call: Call, e: IOException) {
-                    //Log.d(TAG, "onFailure()11 called with: call = $call, e = $e")
+                    Log.d(TAG, "onFailure()11 called with: call = $call, e = $e")
                 }
 
                 override fun onResponse(call: Call, response: Response) {
@@ -52,7 +52,7 @@ class OkHttpActivity : BaseActivity() {
 
             client.newCall(request).enqueue(object:Callback{
                 override fun onFailure(call: Call, e: IOException) {
-                    //Log.d(TAG, "onFailure()22 called with: call = $call, e = $e")
+                    Log.d(TAG, "onFailure()22 called with: call = $call, e = $e")
                 }
 
                 override fun onResponse(call: Call, response: Response) {
