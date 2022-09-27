@@ -60,6 +60,7 @@ object Versions {
     const val TYPE_BUILDER_VERSION="1.0"
     const val ULTRA_VIEWPAGER_VERSION="1.0.7.7"
     const val SWIPEBACK_LAYOUT_VERSION="1.1.0"
+    const val OKHTTP_VERSION="4.9.0"
 
 }
 
@@ -87,6 +88,8 @@ object BuildDependencies {
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.RXANDROID_VERSION}"
     const val ultraViewpager="com.alibaba.android:ultraviewpager:${Versions.ULTRA_VIEWPAGER_VERSION}@aar"
     const val swipeBackLayout="me.imid.swipebacklayout.lib:library:${Versions.SWIPEBACK_LAYOUT_VERSION}"
+    const val okhttp="com.squareup.okhttp3:okhttp:${Versions.OKHTTP_VERSION}"
+
 }
 
 object AndroidX {

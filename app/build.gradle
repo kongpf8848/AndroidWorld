@@ -58,5 +58,6 @@ dependencies {
     implementation BuildDependencies.commonHelper
 
     implementation BuildDependencies.swipeBackLayout
+    implementation BuildDependencies.okhttp
 
 }

@@ -36,6 +36,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.GaussBlurActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.OkHttpActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
