@@ -5,7 +5,7 @@ apply plugin:  'kotlin-kapt'
 
 android {
     compileSdkVersion Config.compileSdkVersion
-    buildToolsVersion Config.buildToolsVersion
+
 
     defaultConfig {
         applicationId Config.applicationId
@@ -26,6 +26,10 @@ android {
 
     lintOptions {
         abortOnError false
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     compileOptions {

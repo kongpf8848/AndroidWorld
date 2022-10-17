@@ -53,6 +53,10 @@ class MainActivity : BaseActivity() {
         button8.setOnClickListener {
             startNewActivity(clazz = OkHttpActivity::class.java)
         }
+
+        button9.setOnClickListener {
+            startNewActivity(clazz = KeyboardActivity::class.java)
+        }
     }
 
     override fun onStop() {
