@@ -9,27 +9,28 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kongpf8848.androidworld.R
+import com.github.kongpf8848.androidworld.databinding.ActivityLauguageBinding
 import com.github.kongpf8848.androidworld.utils.LanguageUtils
-import kotlinx.android.synthetic.main.activiyt_lauguage.*
 
-class LanguageActivity : BaseActivity() {
+
+class LanguageActivity : BaseActivity<ActivityLauguageBinding>() {
     private var tmpLanguage:String?=""
     private var isFollowSystem:Boolean=true
 
     override fun getLayoutId(): Int {
-        return R.layout.activiyt_lauguage
+        return R.layout.activity_lauguage
     }
 
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
-        toolbar.setNavigationOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             finish()
         }
         isFollowSystem=LanguageUtils.isFollowSystem(this@LanguageActivity)
         tmpLanguage=LanguageUtils.getCurrentLanguage(this@LanguageActivity)
 
-        recyclerview.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerview.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        binding.recyclerview.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.recyclerview.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             override fun onCreateViewHolder(
                 parent: ViewGroup,
                 viewType: Int
@@ -74,7 +75,7 @@ class LanguageActivity : BaseActivity() {
 
         }
 
-        btn_save.setOnClickListener {
+        binding.btnSave.setOnClickListener {
             LanguageUtils.switchLanguage(this@LanguageActivity,isFollowSystem,tmpLanguage)
         }
 

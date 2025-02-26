@@ -8,8 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.model.ColorItem
-import kotlinx.android.synthetic.main.list_item.view.*
-import java.lang.String
 
 class ColorAdapter(val ctx: Context,val list:List<ColorItem>): RecyclerView.Adapter<ColorAdapter.ColorViewHolder>() {
     override fun onCreateViewHolder(
@@ -26,8 +24,8 @@ class ColorAdapter(val ctx: Context,val list:List<ColorItem>): RecyclerView.Adap
     override fun onBindViewHolder(holder: ColorAdapter.ColorViewHolder, position: Int) {
         val data=list[position]
         holder.itemView.apply {
-            tv_title.setBackgroundColor(holder.itemView.resources.getColor(data.color))
-            tv_title.text = String.format("color%d",position)
+            findViewById<TextView>(R.id.tv_title).setBackgroundColor(holder.itemView.resources.getColor(data.color))
+            findViewById<TextView>(R.id.tv_title).text = String.format("color%d",position)
         }
     }
 

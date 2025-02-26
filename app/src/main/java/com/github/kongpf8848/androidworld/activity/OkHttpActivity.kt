@@ -3,12 +3,12 @@ package com.github.kongpf8848.androidworld.activity
 import android.os.Bundle
 import android.util.Log
 import com.github.kongpf8848.androidworld.R
-import kotlinx.android.synthetic.main.activity_okhttp.*
+import com.github.kongpf8848.androidworld.databinding.ActivityOkhttpBinding
 import okhttp3.*
 import java.io.IOException
 import java.lang.String
 
-class OkHttpActivity : BaseActivity() {
+class OkHttpActivity : BaseActivity<ActivityOkhttpBinding>() {
 
     override fun getLayoutId(): Int {
         return R.layout.activity_okhttp
@@ -17,10 +17,10 @@ class OkHttpActivity : BaseActivity() {
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
 
-        toolbar.setNavigationOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             finish()
         }
-        button1.setOnClickListener {
+        binding.button1.setOnClickListener {
             val client = OkHttpClient.Builder()
                 .addInterceptor(LoggingInterceptor())
                 .build()
@@ -41,7 +41,7 @@ class OkHttpActivity : BaseActivity() {
 
             })
         }
-        button2.setOnClickListener {
+        binding.button2.setOnClickListener {
             val client= OkHttpClient.Builder()
                 .addNetworkInterceptor(LoggingInterceptor())
                 .build()

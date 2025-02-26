@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.adapter.ColorAdapter
+import com.github.kongpf8848.androidworld.databinding.FragmentJianshuBinding
 import com.github.kongpf8848.androidworld.model.ColorItem
-import kotlinx.android.synthetic.main.fragment_jianshu.*
 import java.util.*
 
-class Fragment0:BaseFragment(){
+class Fragment0:BaseFragment<FragmentJianshuBinding>(){
 
 
     private val colors = intArrayOf(
@@ -20,19 +20,15 @@ class Fragment0:BaseFragment(){
         R.color.color_8, R.color.color_9
     )
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_jianshu, container, false)
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_jianshu
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerview.layoutManager=LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerview.layoutManager=LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val adapter=ColorAdapter(requireContext(),getData())
-        recyclerview.adapter=adapter
+        binding.recyclerview.adapter=adapter
     }
 
     private fun getData(): List<ColorItem> {

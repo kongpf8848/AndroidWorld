@@ -1,14 +1,13 @@
 package com.github.kongpf8848.androidworld.activity
+
 import android.os.Bundle
 import android.os.Looper
-import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.github.kongpf8848.androidworld.R
+import com.github.kongpf8848.androidworld.databinding.ActivityImageScaleTypeBinding
 import com.github.kongpf8848.androidworld.extension.*
-import kotlinx.android.synthetic.main.activity_image_scale_type.*
 
-class ImageScaleTypeActivity : BaseActivity() {
+
+class ImageScaleTypeActivity : BaseActivity<ActivityImageScaleTypeBinding>() {
 
     override fun getLayoutId(): Int {
         return R.layout.activity_image_scale_type
@@ -16,7 +15,7 @@ class ImageScaleTypeActivity : BaseActivity() {
 
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
-        toolbar.setNavigationOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             finish()
         }
 
@@ -30,13 +29,13 @@ class ImageScaleTypeActivity : BaseActivity() {
 //          iv_image_fitEnd.scaleType=ImageView.ScaleType.FIT_END
 //          iv_image_fitXY.scaleType=ImageView.ScaleType.FIT_XY
 
-            iv_image_fitCenter.fitCenter()
-            iv_image_center.center()
-            iv_image_centerCrop.centerCrop()
-            iv_image_centerInside.centerInside()
-            iv_image_fitStart.fitStart()
-            iv_image_fitEnd.fitEnd()
-            iv_image_fitXY.fitXY()
+            binding.ivImageFitCenter.fitCenter()
+            binding.ivImageCenter.center()
+            binding.ivImageCenterCrop.centerCrop()
+            binding.ivImageCenterInside.centerInside()
+            binding.ivImageFitStart.fitStart()
+            binding.ivImageFitEnd.fitEnd()
+            binding.ivImageFitXY.fitXY()
 
             false
         }

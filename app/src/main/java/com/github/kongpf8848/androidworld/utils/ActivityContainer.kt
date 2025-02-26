@@ -7,18 +7,18 @@ import java.lang.ref.WeakReference
 
 object ActivityContainer {
 
-    private val acts: MutableList<WeakReference<BaseActivity>> = mutableListOf()
+    private val acts: MutableList<WeakReference<BaseActivity<*>>> = mutableListOf()
 
-    fun add(activity: BaseActivity) {
+    fun add(activity: BaseActivity<*>) {
         acts.add(WeakReference(activity))
     }
 
-    fun remove(activity: BaseActivity) {
+    fun remove(activity: BaseActivity<*>) {
         acts.remove(WeakReference(activity))
     }
 
     fun getPenultimateActivity(): Activity? {
-        var activity: WeakReference<BaseActivity>? = null
+        var activity: WeakReference<BaseActivity<*>>? = null
         try {
             if (acts.size > 1) {
                 activity = acts[acts.size - 2]

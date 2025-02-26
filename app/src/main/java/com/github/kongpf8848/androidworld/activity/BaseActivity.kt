@@ -1,5 +1,6 @@
 package com.github.kongpf8848.androidworld.activity
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -12,18 +13,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.utils.ActivityContainer
 import com.github.kongpf8848.androidworld.utils.LanguageUtils
-import com.kongpf.commonhelper.ScreenHelper
+import io.github.kongpf8848.commonhelper.ScreenHelper
 import me.imid.swipebacklayout.lib.SwipeBackLayout
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 
-abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener {
+abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
+    SwipeBackLayout.SwipeListener {
 
     val TAG: String = javaClass.simpleName
 
-    private val languageReceiver =object : BroadcastReceiver() {
+    private val languageReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val action = intent?.action
             if (LanguageUtils.LANGUAGE_ACTION == action) {
@@ -32,16 +36,23 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
         }
     }
 
+    protected lateinit var binding: T
+
+
+
     protected abstract fun getLayoutId(): Int
 
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     override fun onCreate(savedInstanceState: Bundle?) {
         onCreateStart(savedInstanceState)
         Log.d(TAG, "onCreateStart called")
         super.onCreate(savedInstanceState)
         ActivityContainer.add(this)
         Log.d(TAG, "onCreate11 called")
-        setContentView(getLayoutId())
-        registerReceiver(languageReceiver, IntentFilter(LanguageUtils.LANGUAGE_ACTION))
+        binding = DataBindingUtil.setContentView(this, getLayoutId())
+        registerReceiver(
+            this.languageReceiver, IntentFilter(LanguageUtils.LANGUAGE_ACTION)
+        )
         Log.d(TAG, "onCreate22 called")
         onCreateEnd(savedInstanceState)
         Log.d(TAG, "onCreateEnd called")
@@ -137,7 +148,7 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
             /**
              * 高亮状态栏字体
              */
-            if(statusBarDarkFont()) {
+            if (statusBarDarkFont()) {
                 uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             }
         }
@@ -145,7 +156,7 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
             /**
              * 高亮导航栏字体
              */
-            if(navigationBarDarkFont()) {
+            if (navigationBarDarkFont()) {
                 uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
             }
         }
@@ -159,8 +170,8 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
         /**
          * 获取状态栏View
          */
-        var statusBarView=getStatusBarView()
-        if(statusBarView==null) {
+        var statusBarView = getStatusBarView()
+        if (statusBarView == null) {
             statusBarView = View(this)
             statusBarView.id = R.id.status_bar_id
             val contentView = window.decorView.findViewById(android.R.id.content) as ViewGroup
@@ -171,26 +182,32 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
             /**
              * 添加状态栏布局
              */
-            contentView.addView(statusBarView, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, statusBarHeight))
-        }
-        else{
+            contentView.addView(
+                statusBarView,
+                ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, statusBarHeight)
+            )
+        } else {
             setStatusBarHeight(statusBarView)
         }
-        statusBarView.setBackgroundColor(ContextCompat.getColor(applicationContext,statusBarColor()))
-        window.navigationBarColor = ContextCompat.getColor(applicationContext,navigationBarColor())
+        statusBarView.setBackgroundColor(
+            ContextCompat.getColor(
+                applicationContext,
+                statusBarColor()
+            )
+        )
+        window.navigationBarColor = ContextCompat.getColor(applicationContext, navigationBarColor())
     }
 
     /**
      * 设置状态栏字体是否高亮
      */
-    fun setStatusBarDarkFont(darkFont:Boolean){
-        var uiFlags =View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+    fun setStatusBarDarkFont(darkFont: Boolean) {
+        var uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if(darkFont) {
+            if (darkFont) {
                 uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            }
-            else{
-                uiFlags =uiFlags or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            } else {
+                uiFlags = uiFlags or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             }
         }
         window.decorView.systemUiVisibility = uiFlags
@@ -199,14 +216,17 @@ abstract class BaseActivity : SwipeBackActivity(),SwipeBackLayout.SwipeListener 
     /**
      * 设置View高度为状态栏高度
      */
-    fun setStatusBarHeight(view:View?) {
-        if(view==null){
+    fun setStatusBarHeight(view: View?) {
+        if (view == null) {
             return
         }
-        val fixHeight=ScreenHelper.getStatusbarHeight(this)
+        val fixHeight = ScreenHelper.getStatusbarHeight(this)
         var layoutParams = view.layoutParams
         if (layoutParams == null) {
-            layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
         }
         if (layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT || layoutParams.height == ViewGroup.LayoutParams.MATCH_PARENT) {
             val finalLayoutParams = layoutParams

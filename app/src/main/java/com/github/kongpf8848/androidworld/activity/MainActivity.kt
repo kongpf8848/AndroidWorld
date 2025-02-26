@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.github.kongpf8848.androidworld.R
+import com.github.kongpf8848.androidworld.databinding.ActivityMainBinding
 import com.github.kongpf8848.androidworld.extension.startNewActivity
 import com.github.kongpf8848.androidworld.utils.ScreenShotListenManager
-import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
@@ -19,27 +20,35 @@ class MainActivity : BaseActivity() {
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
         setSwipeBackEnable(false)
-        button1.setOnClickListener {
+        binding.button1.setOnClickListener {
             startNewActivity(clazz = JSUserInfoActivity::class.java)
         }
-        button2.setOnClickListener {
+        binding.button2.setOnClickListener {
             startNewActivity(clazz = JSTabActivity::class.java)
         }
-        button3.setOnClickListener {
+        binding.button3.setOnClickListener {
             startNewActivity(clazz = ImageScaleTypeActivity::class.java)
         }
-        button4.setOnClickListener {
+        binding.button4.setOnClickListener {
             startNewActivity(clazz = GlideHolderActivity::class.java)
         }
-        button5.setOnClickListener {
+        binding.button5.setOnClickListener {
             startNewActivity(clazz = LanguageActivity::class.java)
         }
-        button6.setOnClickListener {
+        binding.button6.setOnClickListener {
             startNewActivity(clazz = GaussBlurActivity::class.java)
         }
-        button7.setOnClickListener {
-            if(ActivityCompat.checkSelfPermission(applicationContext,Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this@MainActivity, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),0)
+        binding.button7.setOnClickListener {
+            if (ActivityCompat.checkSelfPermission(
+                    applicationContext,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this@MainActivity,
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    0
+                )
                 return@setOnClickListener
             }
             ScreenShotListenManager.newInstance(applicationContext).apply {
@@ -50,11 +59,11 @@ class MainActivity : BaseActivity() {
 
         }
 
-        button8.setOnClickListener {
+        binding.button8.setOnClickListener {
             startNewActivity(clazz = OkHttpActivity::class.java)
         }
 
-        button9.setOnClickListener {
+        binding.button9.setOnClickListener {
             startNewActivity(clazz = KeyboardActivity::class.java)
         }
     }

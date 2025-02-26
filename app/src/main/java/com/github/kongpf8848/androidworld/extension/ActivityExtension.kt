@@ -2,9 +2,7 @@ package com.github.kongpf8848.androidworld.extension
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import com.kongpf.commonhelper.ScreenHelper
-
+import io.github.kongpf8848.commonhelper.ScreenHelper
 
 fun AppCompatActivity.dp2px(dp:Float):Int{
     return ScreenHelper.dp2px(this,dp)

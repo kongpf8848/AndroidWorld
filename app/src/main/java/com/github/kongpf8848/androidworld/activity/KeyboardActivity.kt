@@ -5,10 +5,11 @@ import android.util.Log
 import android.widget.FrameLayout
 import androidx.core.view.updateLayoutParams
 import com.github.kongpf8848.androidworld.R
+import com.github.kongpf8848.androidworld.databinding.ActivityKeyboardBinding
 import com.github.kongpf8848.androidworld.utils.KeyboardUtils
-import kotlinx.android.synthetic.main.activity_keyboard.*
 
-class KeyboardActivity : BaseActivity() {
+
+class KeyboardActivity : BaseActivity<ActivityKeyboardBinding>() {
     private var keyboardUtils: KeyboardUtils? = null
     override fun getLayoutId(): Int {
         return R.layout.activity_keyboard
@@ -23,7 +24,7 @@ class KeyboardActivity : BaseActivity() {
                 TAG,
                 "onKeyboardChange() called with: isPopup = [$isPopup], keyboardHeight = [$keyboardHeight]"
             )
-            tv_refresh.updateLayoutParams<FrameLayout.LayoutParams> {
+            binding.tvRefresh.updateLayoutParams<FrameLayout.LayoutParams> {
                 bottomMargin = keyboardHeight
             }
         }.apply {

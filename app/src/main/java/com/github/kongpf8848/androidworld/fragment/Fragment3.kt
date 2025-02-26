@@ -1,19 +1,11 @@
 package com.github.kongpf8848.androidworld.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.github.kongpf8848.androidworld.R
+import com.github.kongpf8848.androidworld.databinding.FragmentJianshuBinding
 
-class Fragment3:BaseFragment(){
+class Fragment3:BaseFragment<FragmentJianshuBinding>(){
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_jianshu, container, false)
-        return view
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_jianshu
     }
 }

@@ -6,11 +6,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-open class BaseFragment : Fragment() {
+abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
 
     protected val TAG = javaClass.simpleName
+    private lateinit var _binding: T
+    val binding get() = _binding
+
+    protected abstract fun getLayoutId(): Int
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -34,7 +40,8 @@ open class BaseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d(TAG, "onCreateView")
-        return super.onCreateView(inflater, container, savedInstanceState)
+        _binding = DataBindingUtil.inflate(inflater,getLayoutId(), container, false)
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

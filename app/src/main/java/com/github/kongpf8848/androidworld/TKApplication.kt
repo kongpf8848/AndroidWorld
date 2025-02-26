@@ -5,7 +5,8 @@ import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import com.github.kongpf8848.androidworld.utils.LanguageUtils
-import com.kongpf.commonhelper.ToastHelper
+import io.github.kongpf8848.commonhelper.ToastHelper
+
 
 class TKApplication:Application(){
 
