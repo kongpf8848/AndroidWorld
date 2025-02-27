@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 
 android {
     namespace 'com.github.kongpf8848.androidworld'
@@ -46,6 +47,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.test.ext:junit-ktx:1.2.1'
     testImplementation BuildDependencies.junit
 
     implementation AndroidX.appCompat

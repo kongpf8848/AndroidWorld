@@ -81,6 +81,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="监听键盘" />
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Parcelable" />
+
+
         </LinearLayout>
 
     </ScrollView>

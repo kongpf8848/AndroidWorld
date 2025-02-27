@@ -66,6 +66,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.button9.setOnClickListener {
             startNewActivity(clazz = KeyboardActivity::class.java)
         }
+        binding.button10.setOnClickListener {
+            startNewActivity(clazz = ParcelActivity::class.java)
+        }
     }
 
     override fun onStop() {
