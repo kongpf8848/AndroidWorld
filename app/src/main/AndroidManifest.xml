@@ -42,6 +42,8 @@
 
         <activity android:name=".activity.KeyboardActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.ParcelActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
