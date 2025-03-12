@@ -1,6 +1,5 @@
 package com.github.kongpf8848.androidworld.parcel;
 
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
