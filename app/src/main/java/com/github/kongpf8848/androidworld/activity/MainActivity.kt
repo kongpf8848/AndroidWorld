@@ -1,6 +1,7 @@
 package com.github.kongpf8848.androidworld.activity
 
 import android.Manifest
+import android.content.ContentProvider
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -68,6 +69,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.button10.setOnClickListener {
             startNewActivity(clazz = ParcelActivity::class.java)
+        }
+        binding.button11.setOnClickListener {
+            startNewActivity(clazz = ContentProviderActivity::class.java)
         }
     }
 

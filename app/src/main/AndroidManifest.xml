@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
         android:name=".TKApplication"
@@ -44,6 +46,9 @@
         <activity android:name=".activity.KeyboardActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.ParcelActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.ContentProviderActivity"
             android:screenOrientation="portrait" />
 
     </application>
