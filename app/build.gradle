@@ -60,6 +60,11 @@ dependencies {
     implementation AndroidX.core
     implementation AndroidX.coreKtx
 
+    implementation AndroidX.workRuntime
+    implementation AndroidX.workRuntimeKtx
+    implementation AndroidX.workRxjava2
+    implementation AndroidX.workMultiprocess
+
     implementation BuildDependencies.immersionbar
     implementation BuildDependencies.glide
     kapt BuildDependencies.glideCompiler
