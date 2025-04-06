@@ -9,21 +9,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.os.Parcel;
 import android.provider.ContactsContract;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.StringDef;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,8 +29,6 @@ import com.github.kongpf8848.androidworld.model.PhoneContact;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import kotlinx.coroutines.scheduling.CoroutineScheduler;
 
 public class ContentProviderActivity extends BaseActivity<ActivityContentProviderBinding> {
 

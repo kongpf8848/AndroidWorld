@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:largeHeap="true"
@@ -53,6 +54,10 @@
             android:screenOrientation="portrait" />
 
         <activity android:name=".activity.WorkManagerActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity android:name=".activity.GalleryActivity"
             android:screenOrientation="portrait" />
 
     </application>

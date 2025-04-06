@@ -1,6 +1,7 @@
 package com.github.kongpf8848.androidworld.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -74,6 +75,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.button12.setOnClickListener {
             startNewActivity(clazz = WorkManagerActivity::class.java)
+        }
+        binding.button13.setOnClickListener {
+            //startNewActivity(clazz =GalleryActivity::class.java)
+            val intent = Intent(this, GalleryActivity::class.java)
+            applicationContext.startActivity(intent)
         }
     }
 

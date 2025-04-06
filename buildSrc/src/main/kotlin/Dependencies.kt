@@ -85,6 +85,8 @@ object BuildDependencies {
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.GLIDE_VERSION}"
     const val glideIntegration =
         "com.github.bumptech.glide:okhttp3-integration:${Versions.GLIDE_VERSION}"
+    const val recyclerviewIntegration =
+        "com.github.bumptech.glide:recyclerview-integration:${Versions.GLIDE_VERSION}"
     const val photoView = "com.github.chrisbanes:PhotoView:${Versions.PHOTOVIEW_VERSION}"
     const val magicIndicator =
         "com.github.hackware1993:MagicIndicator:${Versions.MAGIC_INDICATOR_VERSION}"

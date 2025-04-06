@@ -67,6 +67,7 @@ dependencies {
 
     implementation BuildDependencies.immersionbar
     implementation BuildDependencies.glide
+    implementation BuildDependencies.recyclerviewIntegration
     kapt BuildDependencies.glideCompiler
 
     implementation BuildDependencies.circleImageView

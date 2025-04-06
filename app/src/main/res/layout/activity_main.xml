@@ -103,6 +103,13 @@
                 android:layout_marginTop="20dp"
                 android:text="WorkManager" />
 
+            <Button
+                android:id="@+id/button13"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Gallery" />
+
 
         </LinearLayout>
 
