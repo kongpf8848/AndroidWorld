@@ -77,9 +77,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             startNewActivity(clazz = WorkManagerActivity::class.java)
         }
         binding.button13.setOnClickListener {
-            //startNewActivity(clazz =GalleryActivity::class.java)
-            val intent = Intent(this, GalleryActivity::class.java)
-            applicationContext.startActivity(intent)
+            val maxMemory=Runtime.getRuntime().maxMemory();
+            val totalMemory=Runtime.getRuntime().totalMemory();
+            val freeMemory=Runtime.getRuntime().freeMemory();
+            Log.d(TAG, "MemoryInfo:${maxMemory},${totalMemory},${freeMemory}")
+            startNewActivity(clazz =GalleryActivity::class.java)
         }
     }
 

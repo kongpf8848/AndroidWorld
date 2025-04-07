@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.transition.Transition;
 import com.github.kongpf8848.androidworld.R;
 import com.github.kongpf8848.androidworld.databinding.ActivityContentProviderBinding;
 import com.github.kongpf8848.androidworld.model.PhoneContact;
@@ -116,11 +125,11 @@ public class ContentProviderActivity extends BaseActivity<ActivityContentProvide
                 String contactId = cursor.getString(c0);
                 String name = cursor.getString(c1);
                 int hasPhone = cursor.getInt(c2);
-                String phoneNumber="";
+                String phoneNumber = "";
                 if (hasPhone > 0) {
-                    phoneNumber=getPhoneNumbers(contactId);
+                    phoneNumber = getPhoneNumbers(contactId);
                 }
-                dataList.add(new PhoneContact(name,phoneNumber));
+                dataList.add(new PhoneContact(name, phoneNumber));
             }
             adapter.notifyDataSetChanged();
             cursor.close();
@@ -129,7 +138,7 @@ public class ContentProviderActivity extends BaseActivity<ActivityContentProvide
 
     @SuppressLint("Range")
     private String getPhoneNumbers(String contactId) {
-        String number="";
+        String number = "";
         Uri phoneUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
 
         String[] phoneProjection = new String[]{
@@ -160,11 +169,17 @@ public class ContentProviderActivity extends BaseActivity<ActivityContentProvide
 
     private void initRecyclerView() {
         adapter = new RecyclerView.Adapter<>() {
+
+            public void onViewRecycled(@NonNull RecyclerView.ViewHolder holder) {
+                super.onViewRecycled(holder);
+            }
+
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
                 return new RecyclerView.ViewHolder(view) {
+
                 };
             }
 
@@ -172,9 +187,29 @@ public class ContentProviderActivity extends BaseActivity<ActivityContentProvide
             public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
                 TextView tv_name = holder.itemView.findViewById(R.id.tv_name);
                 TextView tv_phone = holder.itemView.findViewById(R.id.tv_phone);
+                ImageView iv_image = holder.itemView.findViewById(R.id.iv_image);
                 PhoneContact contact = dataList.get(position);
                 tv_name.setText(contact.getName());
                 tv_phone.setText(contact.getPhone());
+
+
+                iv_image.setTag(R.id.tag_glide_holder,position);
+                Glide.with(holder.itemView.getContext()).load(contact.getAvatar())
+                        .into(new SimpleTarget<Drawable>() {
+                            @Override
+                            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                int position = holder.getAdapterPosition();
+                                int previousPosition = (int)iv_image.getTag(R.id.tag_glide_holder);
+                                if (position == previousPosition) {
+                                    iv_image.setImageDrawable(resource);
+                                }
+                            }
+
+                            @Override
+                            public void onLoadStarted(@Nullable Drawable placeholder) {
+                                super.onLoadStarted(placeholder);
+                            }
+                        });
 
             }
 
@@ -186,7 +221,6 @@ public class ContentProviderActivity extends BaseActivity<ActivityContentProvide
         };
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         binding.recyclerview.setAdapter(adapter);
-
 
 
     }

@@ -2,4 +2,5 @@
 <resources>
     <item name="swipe_layout_id" type="id" />
     <item name="status_bar_id" type="id" />
+    <item name="tag_glide_holder" type="id" />
 </resources>

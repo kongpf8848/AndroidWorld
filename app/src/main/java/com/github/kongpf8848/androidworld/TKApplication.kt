@@ -19,6 +19,7 @@ class TKApplication:Application(){
 
     override fun onCreate() {
         super.onCreate()
+
         application=this
         Thread.setDefaultUncaughtExceptionHandler { t, e ->
             e.printStackTrace()
