@@ -1,7 +1,6 @@
 package com.github.kongpf8848.androidworld.activity
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -10,9 +9,12 @@ import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.databinding.ActivityMainBinding
 import com.github.kongpf8848.androidworld.extension.startNewActivity
 import com.github.kongpf8848.androidworld.utils.ScreenShotListenManager
+import com.github.kongpf8848.androidworld.utils.UnPeekLiveData
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    val unPeekLiveData= UnPeekLiveData<String>();
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
@@ -83,6 +85,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             Log.d(TAG, "MemoryInfo:${maxMemory},${totalMemory},${freeMemory}")
             startNewActivity(clazz =GalleryActivity::class.java)
         }
+        unPeekLiveData.value="hello"
+        unPeekLiveData.observe(this) {
+            Log.d(TAG, "unPeekLiveData:${it}")
+        }
+
     }
 
     override fun onStop() {
