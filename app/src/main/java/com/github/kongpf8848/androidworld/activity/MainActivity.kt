@@ -3,7 +3,9 @@ package com.github.kongpf8848.androidworld.activity
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
+import android.view.View
 import androidx.core.app.ActivityCompat
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.databinding.ActivityMainBinding
@@ -23,6 +25,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
         setSwipeBackEnable(false)
+
         binding.button1.setOnClickListener {
             startNewActivity(clazz = JSUserInfoActivity::class.java)
         }
@@ -89,6 +92,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         unPeekLiveData.observe(this) {
             Log.d(TAG, "unPeekLiveData:${it}")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
 
     }
 

@@ -24,6 +24,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -172,6 +173,8 @@ public class ContentProviderActivity extends BaseActivity<ActivityContentProvide
 
             public void onViewRecycled(@NonNull RecyclerView.ViewHolder holder) {
                 super.onViewRecycled(holder);
+                ImageView iv_image = holder.itemView.findViewById(R.id.iv_image);
+                Glide.with(holder.itemView.getContext()).clear(iv_image);
             }
 
             @NonNull
@@ -192,23 +195,20 @@ public class ContentProviderActivity extends BaseActivity<ActivityContentProvide
                 tv_name.setText(contact.getName());
                 tv_phone.setText(contact.getPhone());
 
+                Glide.with(holder.itemView.getContext()).clear(iv_image);
 
-                iv_image.setTag(R.id.tag_glide_holder,position);
+                iv_image.setTag(R.id.tag_glide_holder, position);
                 Glide.with(holder.itemView.getContext()).load(contact.getAvatar())
                         .into(new SimpleTarget<Drawable>() {
                             @Override
                             public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                                 int position = holder.getAdapterPosition();
-                                int previousPosition = (int)iv_image.getTag(R.id.tag_glide_holder);
+                                int previousPosition = (int) iv_image.getTag(R.id.tag_glide_holder);
                                 if (position == previousPosition) {
                                     iv_image.setImageDrawable(resource);
                                 }
                             }
 
-                            @Override
-                            public void onLoadStarted(@Nullable Drawable placeholder) {
-                                super.onLoadStarted(placeholder);
-                            }
                         });
 
             }
@@ -219,9 +219,36 @@ public class ContentProviderActivity extends BaseActivity<ActivityContentProvide
             }
 
         };
+        RecyclerView.RecycledViewPool pool = new RecyclerView.RecycledViewPool();
+        pool.setMaxRecycledViews(0, 20);
+        binding.recyclerview.setRecycledViewPool(pool);
+        binding.recyclerview.setHasFixedSize(true);
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         binding.recyclerview.setAdapter(adapter);
+        binding.recyclerview.setItemViewCacheSize(20);
+        binding.recyclerview.setNestedScrollingEnabled(false);
+        RecyclerView.ItemAnimator itemAnimator = binding.recyclerview.getItemAnimator();
+        if (itemAnimator instanceof SimpleItemAnimator) {
+            ((SimpleItemAnimator) (binding.recyclerview.getItemAnimator())).setSupportsChangeAnimations(false);
+        }
+        binding.recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    Glide.with(ContentProviderActivity.this).pauseRequests();
+                } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    Glide.with(ContentProviderActivity.this).resumeRequests();
+                }
+            }
 
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
+        new RecyclerView.RecycledViewPool();
 
     }
 
