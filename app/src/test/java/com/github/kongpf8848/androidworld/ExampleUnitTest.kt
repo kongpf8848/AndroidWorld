@@ -1,8 +1,8 @@
 package com.github.kongpf8848.androidworld
 
-import org.junit.Test
-
+import androidx.core.util.Pools
 import org.junit.Assert.*
+import org.junit.Test
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +12,15 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val pools = Pools.SynchronizedPool<String>(10);
+        val obj = pools.acquire()
+        try {
+            println(obj)
+        } finally {
+            if(obj!=null) {
+                pools.release(obj);
+            }
+        }
+
     }
 }

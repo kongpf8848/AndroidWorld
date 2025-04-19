@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.databinding.ActivityOkhttpBinding
+import com.github.kongpf8848.androidworld.utils.HttpEventListener
 import okhttp3.*
 import java.io.IOException
 import java.lang.String
+import java.net.Proxy
 
 class OkHttpActivity : BaseActivity<ActivityOkhttpBinding>() {
 
@@ -23,10 +25,15 @@ class OkHttpActivity : BaseActivity<ActivityOkhttpBinding>() {
         binding.button1.setOnClickListener {
             val client = OkHttpClient.Builder()
                 .addInterceptor(LoggingInterceptor())
+                .eventListener(HttpEventListener())
+                .proxy(Proxy.NO_PROXY)
                 .build()
 
+
+
             val request = Request.Builder()
-                .url("http://www.publicobject.com/helloworld.txt")
+                .url("https://publicobject.com/helloworld.txt")
+                //https://publicobject.com/helloworld.txt
                 .header("Name", "OkHttp Example")
                 .build()
 
