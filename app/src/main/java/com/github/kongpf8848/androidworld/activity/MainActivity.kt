@@ -16,7 +16,6 @@ import com.github.kongpf8848.androidworld.utils.UnPeekLiveData
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    val unPeekLiveData= UnPeekLiveData<String>();
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
@@ -47,22 +46,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.button7.setOnClickListener {
             if (ActivityCompat.checkSelfPermission(
                     applicationContext,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
+                    Manifest.permission.CAMERA
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 ActivityCompat.requestPermissions(
                     this@MainActivity,
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    arrayOf(Manifest.permission.CAMERA),
                     0
                 )
                 return@setOnClickListener
             }
-            ScreenShotListenManager.newInstance(applicationContext).apply {
-                setListener {
-                    Log.d(TAG, "onShot called:$it")
-                }
-            }.startListen()
-
+            startNewActivity(clazz = CameraActivity::class.java)
         }
 
         binding.button8.setOnClickListener {
@@ -82,15 +76,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             startNewActivity(clazz = WorkManagerActivity::class.java)
         }
         binding.button13.setOnClickListener {
-            val maxMemory=Runtime.getRuntime().maxMemory();
-            val totalMemory=Runtime.getRuntime().totalMemory();
-            val freeMemory=Runtime.getRuntime().freeMemory();
-            Log.d(TAG, "MemoryInfo:${maxMemory},${totalMemory},${freeMemory}")
             startNewActivity(clazz =GalleryActivity::class.java)
-        }
-        unPeekLiveData.value="hello"
-        unPeekLiveData.observe(this) {
-            Log.d(TAG, "unPeekLiveData:${it}")
         }
     }
 
