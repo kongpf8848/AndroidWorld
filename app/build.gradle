@@ -59,6 +59,8 @@ dependencies {
     implementation AndroidX.constraintlayout
     implementation AndroidX.core
     implementation AndroidX.coreKtx
+    implementation AndroidX.activityKtx
+    implementation AndroidX.fragmentKtx
 
     implementation AndroidX.workRuntime
     implementation AndroidX.workRuntimeKtx
