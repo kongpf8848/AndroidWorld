@@ -25,7 +25,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
     SwipeBackLayout.SwipeListener {
 
-    val TAG: String = javaClass.simpleName
+     val TAG: String = javaClass.simpleName
 
     private val languageReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -101,11 +101,6 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
         Log.d(TAG, "attachBaseContext() called")
     }
 
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        Log.d(TAG, "onNewIntent() called")
-    }
-
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         Log.d(TAG, "onAttachedToWindow() called")
@@ -122,6 +117,12 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
 
     override fun onScrollOverThreshold() {
         Log.d(TAG, "onScrollOverThreshold() called")
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        Log.d(TAG, "onNewIntent() called with: intent = $intent")
+        super.onNewIntent(intent)
+        setIntent(intent)
     }
 
     override fun onScrollStateChange(state: Int, scrollPercent: Float) {

@@ -26,6 +26,7 @@ abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         Log.d(TAG, "setUserVisibleHint:$isVisibleToUser")
+
     }
 
     override fun onHiddenChanged(hidden: Boolean) {

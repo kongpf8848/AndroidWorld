@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:largeHeap="true"
@@ -67,6 +68,33 @@
 
         <activity android:name=".activity.CameraActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.task.TaskActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".activity.task.StandardActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="standard"
+            />
+        <activity android:name=".activity.task.SingleTopActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            />
+        <activity android:name=".activity.task.SingleTaskActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            />
+        <activity android:name=".activity.task.SingleInstanceActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"
+            />
+
+        <activity android:name=".activity.task.TestActivity"
+            android:screenOrientation="portrait"
+
+            />
+
 
     </application>
 

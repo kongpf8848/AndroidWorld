@@ -1,7 +1,11 @@
 package com.github.kongpf8848.androidworld.activity
 
 import android.os.Bundle
+import android.os.Message
+import android.os.Messenger
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import com.github.kongpf8848.androidworld.R
 import com.github.kongpf8848.androidworld.databinding.ActivityOkhttpBinding
 import com.github.kongpf8848.androidworld.utils.HttpEventListener
@@ -18,18 +22,18 @@ class OkHttpActivity : BaseActivity<ActivityOkhttpBinding>() {
 
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
+        Message.obtain()
 
         binding.toolbar.setNavigationOnClickListener {
             finish()
         }
+
         binding.button1.setOnClickListener {
             val client = OkHttpClient.Builder()
                 .addInterceptor(LoggingInterceptor())
                 .eventListener(HttpEventListener())
                 .proxy(Proxy.NO_PROXY)
                 .build()
-
-
 
             val request = Request.Builder()
                 .url("https://publicobject.com/helloworld.txt")

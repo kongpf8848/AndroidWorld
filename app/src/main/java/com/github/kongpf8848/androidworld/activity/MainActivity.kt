@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import com.github.kongpf8848.androidworld.R
+import com.github.kongpf8848.androidworld.activity.task.TaskActivity
 import com.github.kongpf8848.androidworld.databinding.ActivityMainBinding
 import com.github.kongpf8848.androidworld.extension.startNewActivity
 import com.github.kongpf8848.androidworld.utils.ScreenShotListenManager
@@ -67,7 +68,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             startNewActivity(clazz = KeyboardActivity::class.java)
         }
         binding.button10.setOnClickListener {
-            startNewActivity(clazz = ParcelActivity::class.java)
+            startNewActivity(clazz = TaskActivity::class.java)
         }
         binding.button11.setOnClickListener {
             startNewActivity(clazz = ContentProviderActivity::class.java)
