@@ -25,7 +25,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
     SwipeBackLayout.SwipeListener {
 
-     val TAG: String = javaClass.simpleName
+    val TAG: String = javaClass.simpleName
 
     private val languageReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -39,7 +39,6 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
     protected lateinit var binding: T
 
 
-
     protected abstract fun getLayoutId(): Int
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
@@ -50,6 +49,7 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
         ActivityContainer.add(this)
         Log.d(TAG, "onCreate11 called")
         binding = DataBindingUtil.setContentView(this, getLayoutId())
+        binding.lifecycleOwner = this
         registerReceiver(
             this.languageReceiver, IntentFilter(LanguageUtils.LANGUAGE_ACTION)
         )

@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
+abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     protected val TAG = javaClass.simpleName
     private lateinit var _binding: T
@@ -39,9 +39,14 @@ abstract class BaseFragment<T:ViewDataBinding>: Fragment() {
         Log.d(TAG, "onCreate")
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         Log.d(TAG, "onCreateView")
-        _binding = DataBindingUtil.inflate(inflater,getLayoutId(), container, false)
+        _binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        _binding.lifecycleOwner = viewLifecycleOwner
         return _binding.root
     }
 
