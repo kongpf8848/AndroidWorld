@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.github.kongpf8848.androidworld.model.User" />
+
+        <variable
+            name="inputMsg"
+            type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+        <variable
+            name="clickListener"
+            type="com.github.kongpf8848.androidworld.activity.MyDataBindingActivity.MyClick" />
+
+        <variable
+            name="clickListener2"
+            type="com.github.kongpf8848.androidworld.activity.MyDataBindingActivity.MyClick2" />
+        
+        <variable
+            name="vm"
+            type="com.github.kongpf8848.androidworld.viewmodel.MyViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:text="@{vm.userName}"
+            android:textColor="@color/blue"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@{user.name}"
+            android:textColor="@color/blue"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@{inputMsg}"
+            android:textColor="@color/blue"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="44dp"
+            android:inputType="textPersonName"
+            android:text="@={inputMsg}"
+         />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="动态改变User的name值"
+            android:onClick="@{clickListener.onClick}"
+            />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="点击事件传入参数User"
+            android:onClick="@{()->clickListener2.onClick(user)}" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="LiveData数据变化"
+        />
+
+    </LinearLayout>
+
+</layout>

@@ -28,7 +28,7 @@ class TKApplication : Application() {
         ToastHelper.init(this)
 
         Looper.myLooper()?.setMessageLogging {
-            Log.d("MessageLogging", "message:$it");
+            //Log.d("MessageLogging", "message:$it");
         }
 
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {

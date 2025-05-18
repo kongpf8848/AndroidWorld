@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.github.kongpf8848.androidworld.R
-import com.github.kongpf8848.androidworld.utils.ActivityContainer
 import com.github.kongpf8848.androidworld.utils.LanguageUtils
 import io.github.kongpf8848.commonhelper.ScreenHelper
 import me.imid.swipebacklayout.lib.SwipeBackLayout
@@ -46,7 +45,6 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
         onCreateStart(savedInstanceState)
         Log.d(TAG, "onCreateStart called")
         super.onCreate(savedInstanceState)
-        ActivityContainer.add(this)
         Log.d(TAG, "onCreate11 called")
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.lifecycleOwner = this
@@ -86,8 +84,8 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
 
     override fun onDestroy() {
         super.onDestroy()
-        ActivityContainer.remove(this)
         unregisterReceiver(languageReceiver)
+        binding?.unbind()
         Log.d(TAG, "onDestroy() called")
     }
 

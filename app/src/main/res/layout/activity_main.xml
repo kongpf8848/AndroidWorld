@@ -111,6 +111,13 @@
                 android:layout_marginTop="20dp"
                 android:text="Gallery" />
 
+            <Button
+                android:id="@+id/button14"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Databinding" />
+
 
         </LinearLayout>
 

@@ -79,6 +79,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.button13.setOnClickListener {
             startNewActivity(clazz =GalleryActivity::class.java)
         }
+        binding.button14.setOnClickListener {
+            startNewActivity(clazz = MyDataBindingActivity::class.java)
+        }
     }
 
     override fun onResume() {
