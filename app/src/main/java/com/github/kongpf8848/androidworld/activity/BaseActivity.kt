@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -39,6 +40,22 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
 
 
     protected abstract fun getLayoutId(): Int
+
+    override fun attachBaseContext(newBase: Context) {
+        Log.d(TAG, "attachBaseContext() called:${newBase.resources.configuration.fontScale}")
+        val overrideConfig= Configuration(newBase.resources.configuration)
+        overrideConfig.fontScale = 1.0f
+        val context = newBase.createConfigurationContext(overrideConfig)
+        super.attachBaseContext(context)
+    }
+
+//    override fun onConfigurationChanged(newConfig: Configuration) {
+//        Log.d(TAG, "onConfigurationChanged() called with: newConfig = $newConfig")
+//        super.onConfigurationChanged(newConfig)
+//        val overrideConfig = Configuration(newConfig)
+//        overrideConfig.fontScale = 1.0f
+//        applyOverrideConfiguration(overrideConfig)
+//    }
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,10 +111,6 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
         Log.d(TAG, "onRestart() called")
     }
 
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(newBase)
-        Log.d(TAG, "attachBaseContext() called")
-    }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
