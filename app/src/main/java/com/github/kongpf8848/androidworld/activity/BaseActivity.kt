@@ -27,14 +27,6 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
 
     val TAG: String = javaClass.simpleName
 
-    private val languageReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            val action = intent?.action
-            if (LanguageUtils.LANGUAGE_ACTION == action) {
-                recreate()
-            }
-        }
-    }
 
     protected lateinit var binding: T
 
@@ -49,13 +41,6 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
         super.attachBaseContext(context)
     }
 
-//    override fun onConfigurationChanged(newConfig: Configuration) {
-//        Log.d(TAG, "onConfigurationChanged() called with: newConfig = $newConfig")
-//        super.onConfigurationChanged(newConfig)
-//        val overrideConfig = Configuration(newConfig)
-//        overrideConfig.fontScale = 1.0f
-//        applyOverrideConfiguration(overrideConfig)
-//    }
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,9 +50,6 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
         Log.d(TAG, "onCreate11 called")
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.lifecycleOwner = this
-        registerReceiver(
-            this.languageReceiver, IntentFilter(LanguageUtils.LANGUAGE_ACTION)
-        )
         Log.d(TAG, "onCreate22 called")
         onCreateEnd(savedInstanceState)
         Log.d(TAG, "onCreateEnd called")
@@ -101,7 +83,6 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(languageReceiver)
         binding?.unbind()
         Log.d(TAG, "onDestroy() called")
     }
