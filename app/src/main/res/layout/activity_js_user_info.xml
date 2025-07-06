@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:fitsSystemWindows="true"
-            app:layout_behavior="com.github.kongpf8848.androidworld.utils.FlingBehavior">
+            app:layout_behavior="com.github.kongpf8848.androidworld.utils.FixedAppBarLayoutBehavior">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
@@ -167,6 +167,39 @@
                         android:text="20 关注   35 粉丝   24.4 总资产" />
 
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:background="@color/red"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:background="@color/blue"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:background="@color/green"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:background="@color/red"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:background="@color/blue"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:background="@color/green"
+                        />
                 </LinearLayout>
 
                 <androidx.appcompat.widget.Toolbar
@@ -183,7 +216,7 @@
                 android:id="@+id/ll_tablayout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-24dp"
+                android:layout_marginTop="-10dp"
                 android:orientation="vertical">
 
                 <View
@@ -197,17 +230,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="48dp"
                     android:background="@color/white"
-                    app:layout_scrollFlags="enterAlways"
-                    app:tabGravity="center"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:tabGravity="start"
                     app:tabIndicatorColor="#f35e5f"
                     app:tabIndicatorHeight="2dp"
+                    app:tabIndicator="@drawable/tab_indicator"
                     app:tabMaxWidth="0dp"
-                    app:tabMode="fixed"
-                    app:tabPaddingEnd="26dp"
-                    app:tabPaddingStart="26dp"
+                    app:tabMode="scrollable"
+                    app:tabIndicatorFullWidth="false"
                     app:tabRippleColor="@color/transparent"
                     app:tabSelectedTextColor="#f35e5f"
-                    app:tabTextColor="#999999" />
+                    app:tabTextColor="#999999"
+                    app:tabIndicatorGravity="bottom"
+
+                    />
 
                 <View
                     android:id="@+id/view_line_2"

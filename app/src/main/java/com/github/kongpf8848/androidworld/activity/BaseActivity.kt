@@ -155,6 +155,11 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
         }
         window.decorView.systemUiVisibility = uiFlags
 
+        setStatusBarAndNavigationBarColor()
+
+    }
+
+    protected open fun setStatusBarAndNavigationBarColor(){
         /**
          * 获取状态栏高度
          */

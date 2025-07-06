@@ -37,7 +37,9 @@
         </activity>
 
         <activity android:name=".activity.JSUserInfoActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            />
         <activity android:name=".activity.JSTabActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.ImageScaleTypeActivity"
