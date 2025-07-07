@@ -76,26 +76,35 @@ class JSUserInfoActivity : BaseActivity<ActivityJsUserInfoBinding>() {
         binding.tvUserInfo.text = ssb
 
         binding.appBar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-            val ratio = Math.abs(verticalOffset) * 1.0f / appBarLayout.totalScrollRange
-            binding.viewStatusHeight.setBackgroundColor(
-                ColorUtils.blendARGB(
-                    Color.TRANSPARENT,
-                    Color.WHITE,
-                    ratio
-                )
+            Log.d(
+                TAG,
+                "onCreateEnd() called with: verticalOffset = $verticalOffset"
             )
-            binding.toolbar.setBackgroundColor(
-                ColorUtils.blendARGB(
-                    Color.TRANSPARENT,
-                    Color.BLACK,
-                    ratio
+            var ratio = Math.abs(verticalOffset) * 1.0f / 150
+            if(ratio>1.0f){
+                ratio=1.0f;
+            }
+            if(ratio in 0.0f..1f) {
+                binding.viewStatusHeight.setBackgroundColor(
+                    ColorUtils.blendARGB(
+                        Color.TRANSPARENT,
+                        Color.WHITE,
+                        ratio
+                    )
                 )
-            )
-            binding.ivToolbarBack.isSelected = ratio >= 0.5
-            binding.ivToolbarNav.isSelected = ratio >= 0.5
-            binding.ivToolbarSearch.isSelected = ratio >= 0.5
-            binding.toolbarTitle.visibility = if (ratio >= 0.5) View.VISIBLE else View.INVISIBLE
-            setStatusBarDarkFont(ratio >= 0.5)
+                binding.toolbar.setBackgroundColor(
+                    ColorUtils.blendARGB(
+                        Color.TRANSPARENT,
+                        Color.WHITE,
+                        ratio
+                    )
+                )
+                binding.ivToolbarBack.isSelected = ratio >= 0.5
+                binding.ivToolbarNav.isSelected = ratio >= 0.5
+                binding.ivToolbarSearch.isSelected = ratio >= 0.5
+                binding.toolbarTitle.visibility = if (ratio >= 0.5) View.VISIBLE else View.INVISIBLE
+                setStatusBarDarkFont(ratio >= 0.5)
+            }
         }
 
         Looper.myQueue().addIdleHandler {
