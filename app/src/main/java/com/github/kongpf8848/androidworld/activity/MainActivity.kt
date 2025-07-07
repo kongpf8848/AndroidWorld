@@ -13,6 +13,7 @@ import com.github.kongpf8848.androidworld.databinding.ActivityMainBinding
 import com.github.kongpf8848.androidworld.extension.startNewActivity
 import com.github.kongpf8848.androidworld.utils.ScreenShotListenManager
 import com.github.kongpf8848.androidworld.utils.UnPeekLiveData
+import io.github.kongpf8848.commonhelper.ScreenHelper
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -31,6 +32,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.button2.setOnClickListener {
             startNewActivity(clazz = JSTabActivity::class.java)
+            Log.d(TAG, "onCreateEnd() called,getStatusbarHeight:"+ScreenHelper.getStatusbarHeight(this))
+            Log.d(TAG, "onCreateEnd() called,getScreenDensity:"+ScreenHelper.getScreenDensity(this))
+            Log.d(TAG, "onCreateEnd() called,getActionBarHeight:"+ScreenHelper.getActionBarHeight(this))
         }
         binding.button3.setOnClickListener {
             startNewActivity(clazz = ImageScaleTypeActivity::class.java)

@@ -10,6 +10,7 @@ import android.text.style.DynamicDrawableSpan
 import android.text.style.ImageSpan
 import android.util.Log
 import android.view.View
+import android.widget.FrameLayout
 import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.Fragment
 import com.github.kongpf8848.androidworld.R
@@ -20,6 +21,7 @@ import com.github.kongpf8848.androidworld.fragment.Fragment1
 import com.github.kongpf8848.androidworld.fragment.Fragment2
 import com.github.kongpf8848.androidworld.fragment.Fragment3
 import com.google.android.material.tabs.TabLayout
+import io.github.kongpf8848.commonhelper.ScreenHelper
 
 
 class JSUserInfoActivity : BaseActivity<ActivityJsUserInfoBinding>() {
@@ -53,23 +55,7 @@ class JSUserInfoActivity : BaseActivity<ActivityJsUserInfoBinding>() {
         val adapter = FragmentAdapter(supportFragmentManager, fragments, titlesList)
         binding.viewpagerContainer.adapter = adapter
         binding.tablayoutUser.setupWithViewPager(binding.viewpagerContainer)
-
-
-        binding.tablayoutUser.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                Log.d(TAG, "onTabSelected() called with: tab = $tab")
-                //binding.appBar.setExpanded(false)
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                Log.d(TAG, "onTabUnselected() called with: tab = $tab")
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                Log.d(TAG, "onTabReselected() called with: tab = $tab")
-            }
-
-        })
+        (binding.fakeToolbar.layoutParams as FrameLayout.LayoutParams).topMargin=ScreenHelper.getStatusbarHeight(this);
 
 
         binding.ivCover.setImageResource(R.mipmap.ic_scene)
@@ -98,10 +84,10 @@ class JSUserInfoActivity : BaseActivity<ActivityJsUserInfoBinding>() {
                     ratio
                 )
             )
-            binding.viewToolbarBg.setBackgroundColor(
+            binding.toolbar.setBackgroundColor(
                 ColorUtils.blendARGB(
                     Color.TRANSPARENT,
-                    Color.WHITE,
+                    Color.BLACK,
                     ratio
                 )
             )
