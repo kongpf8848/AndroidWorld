@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+//apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 
 android {
@@ -81,7 +81,7 @@ dependencies {
     implementation BuildDependencies.immersionbar
     implementation BuildDependencies.glide
     implementation BuildDependencies.recyclerviewIntegration
-    kapt BuildDependencies.glideCompiler
+    annotationProcessor(BuildDependencies.glideCompiler)
 
     implementation BuildDependencies.circleImageView
     implementation BuildDependencies.commonHelper

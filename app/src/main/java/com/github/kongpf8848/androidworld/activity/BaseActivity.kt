@@ -47,10 +47,8 @@ abstract class BaseActivity<T : ViewDataBinding> : SwipeBackActivity(),
         onCreateStart(savedInstanceState)
         Log.d(TAG, "onCreateStart called")
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate11 called")
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.lifecycleOwner = this
-        Log.d(TAG, "onCreate22 called")
         onCreateEnd(savedInstanceState)
         Log.d(TAG, "onCreateEnd called")
         swipeBackLayout.addSwipeListener(this)

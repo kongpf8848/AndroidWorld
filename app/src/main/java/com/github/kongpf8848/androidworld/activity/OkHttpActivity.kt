@@ -22,7 +22,6 @@ class OkHttpActivity : BaseActivity<ActivityOkhttpBinding>() {
 
     override fun onCreateEnd(savedInstanceState: Bundle?) {
         super.onCreateEnd(savedInstanceState)
-        Message.obtain()
 
         binding.toolbar.setNavigationOnClickListener {
             finish()

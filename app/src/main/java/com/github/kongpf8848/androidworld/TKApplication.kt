@@ -31,58 +31,58 @@ class TKApplication : Application() {
             //Log.d("MessageLogging", "message:$it");
         }
 
-        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
-            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                Log.d(
-                    activity.javaClass.simpleName,
-                    "onActivityCreated() called with: activity = $activity"
-                )
-                LanguageUtils.applyLanguage(activity)
-                LanguageUtils.applyLanguage(application)
-            }
-
-            override fun onActivityStarted(activity: Activity) {
-                Log.d(
-                    activity.javaClass.simpleName,
-                    "onActivityStarted() called with: activity = $activity"
-                )
-            }
-
-            override fun onActivityResumed(activity: Activity) {
-                Log.d(
-                    activity.javaClass.simpleName,
-                    "onActivityResumed() called with: activity = $activity"
-                )
-            }
-
-            override fun onActivityPaused(activity: Activity) {
-                Log.d(
-                    activity.javaClass.simpleName,
-                    "onActivityPaused() called with: activity = $activity"
-                )
-            }
-
-            override fun onActivityStopped(activity: Activity) {
-                Log.d(
-                    activity.javaClass.simpleName,
-                    "onActivityStopped() called with: activity = $activity"
-                )
-            }
-
-            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-                Log.d(
-                    activity.javaClass.simpleName,
-                    "onActivitySaveInstanceState() called with: activity = $activity, outState = $outState"
-                )
-            }
-
-            override fun onActivityDestroyed(activity: Activity) {
-                Log.d(
-                    activity.javaClass.simpleName,
-                    "onActivityDestroyed() called with: activity = $activity"
-                )
-            }
-
-        })
+//        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+//            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+//                Log.d(
+//                    activity.javaClass.simpleName,
+//                    "onActivityCreated() called with: activity = $activity"
+//                )
+//                LanguageUtils.applyLanguage(activity)
+//                LanguageUtils.applyLanguage(application)
+//            }
+//
+//            override fun onActivityStarted(activity: Activity) {
+//                Log.d(
+//                    activity.javaClass.simpleName,
+//                    "onActivityStarted() called with: activity = $activity"
+//                )
+//            }
+//
+//            override fun onActivityResumed(activity: Activity) {
+//                Log.d(
+//                    activity.javaClass.simpleName,
+//                    "onActivityResumed() called with: activity = $activity"
+//                )
+//            }
+//
+//            override fun onActivityPaused(activity: Activity) {
+//                Log.d(
+//                    activity.javaClass.simpleName,
+//                    "onActivityPaused() called with: activity = $activity"
+//                )
+//            }
+//
+//            override fun onActivityStopped(activity: Activity) {
+//                Log.d(
+//                    activity.javaClass.simpleName,
+//                    "onActivityStopped() called with: activity = $activity"
+//                )
+//            }
+//
+//            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+//                Log.d(
+//                    activity.javaClass.simpleName,
+//                    "onActivitySaveInstanceState() called with: activity = $activity, outState = $outState"
+//                )
+//            }
+//
+//            override fun onActivityDestroyed(activity: Activity) {
+//                Log.d(
+//                    activity.javaClass.simpleName,
+//                    "onActivityDestroyed() called with: activity = $activity"
+//                )
+//            }
+//
+//        })
     }
 }
